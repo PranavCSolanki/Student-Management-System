@@ -101,7 +101,6 @@ public class main {
                     String dat = String.valueOf(calendar.getDate());
 
                     try {
-//                        PreparedStatement pst = con.prepareStatement("INSERT INTO `data` ( `name`, `address`, `standerd`, `dob`) VALUES (?,?,?,?)");
                         PreparedStatement pst = con.prepareStatement("INSERT INTO `data` (`sr_no`, `name`, `address`, `standerd`, `dob`) VALUES (?,?,?,?,?)");
                         pst.setString(1, sr);
                         pst.setString(2, name);
@@ -148,61 +147,19 @@ public class main {
 
                     PreparedStatement pst = null;
                     try {
-//                        ResultSet resultSet = con.getMetaData().getCatalogs();
-
-
-//                       if (srno(srf.getText())==srf.getText()){
-//                           System.out.println("data is present in table ");
-//                       }else {
-//                           System.out.println("data is not present in the table");
-//                       }
-
 
                         String deletesql = "delete from data where sr_no=?";
                         pst = con.prepareStatement(deletesql);
                         pst.setString(1, srf.getText());
                         frame.validate();
-//                        model.removeRow();
                         pst.executeUpdate();
 
                         JOptionPane.showMessageDialog(null, "DATA DELETED SUCCESSFULLY");
-
-
-////                        String i = srf.getText();
-//                        int i = table.getSelectedRow();
-////                        model.removeRow(Integer.parseInt(srf.getText()));
-//                     String abc =   model.getColumnName(0);
-//                        System.out.println(abc);`
 
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
 
-//                    try {
-//                        pst.setString(1,srf.getText());
-//
-//                        String i = srf.getText();
-////                    int i = table.getSelectedRow();
-////                        model.removeRow(model.get);
-//                    } catch (SQLException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//
-//                    int rowsAffected = 0;
-//                    try {
-//                        rowsAffected = pst.executeUpdate();
-//                    } catch (SQLException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-
-//                    if (rowsAffected > 0) {
-//                        String i = srf.getText();
-////                    int i = table.getSelectedRow();
-//                        model.removeRow(Integer.parseInt(i));
-//                        JOptionPane.showMessageDialog(null,"DATA DELETED SUCCESFULL");
-//                    } else {
-//                        JOptionPane.showMessageDialog(null, "Error deleting data");
-//                    }
                 }
             }
         });
@@ -239,9 +196,7 @@ public class main {
 
                     try {
                         PreparedStatement pst = con.prepareStatement(
-//                                "update `data` (`name`, `address`, `standerd`, `dob`) SET VALUES (?,?,?,?) where `sr_no`= ?");
-                                "update `data` set `name`= ?, `address`= ?, `standerd`= ?, `dob`=?  where `sr_no`= ?");
-//                        pst.setString(1, sr);
+                               "update `data` set `name`= ?, `address`= ?, `standerd`= ?, `dob`=?  where `sr_no`= ?");
                         pst.setString(1, name);
                         pst.setString(2, addr);
                         pst.setInt(3, std);
@@ -252,7 +207,6 @@ public class main {
                         int i = table.getSelectedRow();
 
                         if (rowsAffected > 0) {
-//                            model.setValueAt(srf.getText(), i, 0);
                             model.setValueAt(namef.getText(), i, 1);
                             model.setValueAt(address.getText(), i, 2);
                             model.setValueAt(model1.getValue(), i, 3);
@@ -439,20 +393,5 @@ public class main {
         return 0;
     }
 
-//    public int srno(String no) throws ClassNotFoundException, SQLException {
-//
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//
-//        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "");
-//
-//        ResultSet resultSet = con.getMetaData().getCatalogs();
-//
-//        while (resultSet.next()) {
-//            // Get the database name
-//            String databaseName = resultSet.getString(1);
-//        }
-//
-//        return 0;
-//    }
 
 }
